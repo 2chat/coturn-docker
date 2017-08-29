@@ -1,7 +1,8 @@
-version: "3.3"
+version: "2.0"
 services:
   coturn:
-    image: 2chat/coturn:latest
+    restart: always
+    image: 2chat/coturn-docker:latest
     network_mode: host
     ports:
       - "3478:3478/udp" # STUN/TURN UDP
@@ -12,7 +13,7 @@ services:
       - "5349:5349/tcp" # STUN/TURN TLS
       - "5350:5350/udp" # STUN/TURN DTLS Alt port (RFC5780 support)
       - "5350:5350/tcp" # STUN/TURN TLS Alt port (RFC5780 support)
-      - "49152:65535/udp" # UDP media ports for TURN relay
+      - "49152-65535:49152-65535/udp" # UDP media ports for TURN relay
     environment:
       PORT: 3478
       ALT_PORT: 3479
