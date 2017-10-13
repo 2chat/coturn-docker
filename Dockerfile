@@ -43,7 +43,7 @@ EXPOSE 5350/udp
 # STUN/TURN TLS Alt port (RFC5780 support)
 EXPOSE 5350/tcp
 # UDP media ports for TURN relay
-EXPOSE 49152-65535/udp
+EXPOSE 20000-65535/udp
 
 ADD coturn.sh /coturn.sh
 RUN chmod u+rx /coturn.sh
